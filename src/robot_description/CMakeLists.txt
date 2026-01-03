@@ -10,6 +10,7 @@ find_package(ament_cmake REQUIRED)
 install(
   DIRECTORY
     worlds
+    urdf
   DESTINATION share/${PROJECT_NAME}
 )
 

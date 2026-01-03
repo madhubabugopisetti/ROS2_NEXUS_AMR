@@ -32,3 +32,11 @@ ros2 pkg create robot_description --build-type ament_cmake
 * add a .gitignore<br />
 * [BUILD](#build)<br />
 * gz sim world.sdf<br />
+
+## STEP 3: Creating a base_link with xacro
+- Create a folder urdf with file robot.xacro<br />
+- Add folder name to CMakeLists.txt<br />
+- add only base_link
+- [BUILD](#build)<br />
+- Terminal 1: gz sim world.sdf<br />
+- Terminal 2: ros2 run ros_gz_sim create -file /tmp/robot.urdf -name robot<br/>
