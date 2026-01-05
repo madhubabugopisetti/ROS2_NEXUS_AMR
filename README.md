@@ -37,7 +37,13 @@ ros2 pkg create robot_description --build-type ament_cmake
 - Create a folder urdf with file robot.xacro<br />
 - Add folder name to CMakeLists.txt<br />
 - [BUILD](#build)<br />
-- Terminal 1: gz sim world.sdf<br />
-- Terminal 2: 
-xacro src/robot_description/urdf/robot.xacro > /tmp/robot.urdf 
-ros2 run ros_gz_sim create -file /tmp/robot.urdf -name robot<br/>
+- Terminal 1: gz sim -r ~/ros2_nexus_amr_ws/src/robot_description/worlds/world.sdf<br />
+- Terminal 2: ros2 run ros_gz_sim create   -name nexus_amr   -file ~/ros2_nexus_amr_ws/src/robot_description/urdf/robot.xacro<br/>
+
+## STEP 4: Move model in linear using /cmd_vel via shell
+- Add plugin at ending of robot.xacro
+- Add physics, gravity, and ground plane in the world.sdf
+- Terminal 1(Start Gazebo): gz sim -r ~/ros2_nexus_amr_ws/src/robot_description/worlds/world.sdf<br />
+- Terminal 2(Spawn Robot): ros2 run ros_gz_sim create   -name nexus_amr   -file ~/ros2_nexus_amr_ws/src/robot_description/urdf/robot.xacro<br/>
+- Terminal 3(Create Bridge): ros2 run ros_gz_bridge parameter_bridge   /cmd_vel@geometry_msgs/msg/Twist@gz.msgs.Twist<br/>
+- Terminal 4(Move Robot linear): ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "{linear: {x: 0.5}, angular: {z: 0.0}}"<br/>
