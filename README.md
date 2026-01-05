@@ -108,3 +108,13 @@ rviz2
 ```
 python3 ~/ros2_nexus_amr_ws/src/robot_description/robot_control/keyboard_teleop.py
 ```
+
+## STEP 7: Automate every terminal to launch file
+- Launches Gazebo with a custom world
+- Spawns the robot from a Xacro-based URDF
+- Bridges control, state, odometry, and TF between Gazebo and ROS 2
+- Runs robot_state_publisher for TF generation
+- Opens RViz with a predefined configuration
+- [BUILD](#build)
+- ros2 launch robot_description bridges.launch.py
+- python3 ~/ros2_nexus_amr_ws/src/robot_description/robot_control/keyboard_teleop.py
