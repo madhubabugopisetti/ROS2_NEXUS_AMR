@@ -43,7 +43,9 @@ def generate_launch_description():
             '/joint_states@sensor_msgs/msg/JointState@gz.msgs.Model',
             '/odom@nav_msgs/msg/Odometry@gz.msgs.Odometry',
             '/tf@tf2_msgs/msg/TFMessage@gz.msgs.Pose_V',
-            '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan'
+            '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
+            '/camera/image@sensor_msgs/msg/Image@gz.msgs.Image',
+            '/camera/camera_info@sensor_msgs/msg/CameraInfo@gz.msgs.CameraInfo'
         ],
         output='screen'
     )

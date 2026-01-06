@@ -133,3 +133,16 @@ In rviz, select Fixed Frame as map, Add map, topic /map
 ```
 - Terminal 4: python3 ~/ros2_nexus_amr_ws/src/robot_description/robot_control/keyboard_teleop.py
 - Terminal 5: ros2 run nav2_map_server map_saver_cli -f ~/ros2_nexus_amr_ws/src/robot_description/maps/my_map
+
+## STEP 9: Adding a camera
+- Add camera link + joint in robot.xacro
+- Add gazebo plugin in same file
+- Add ```/camera/image@sensor_msgs/msg/Image@gz.msgs.Image``` in bridges in all.launch.py
+- [BUILD](#build)
+- Termianl 1: ros2 launch robot_description all.launch.py
+- Termianl 2: python3 ~/ros2_nexus_amr_ws/src/robot_description/robot_control/keyboard_teleop.py
+- RViz:
+```
+Add → Image
+Topic: /camera/image
+```
