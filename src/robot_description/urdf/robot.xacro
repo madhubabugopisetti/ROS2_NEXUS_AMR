@@ -1,5 +1,12 @@
 <?xml version="1.0"?>
 <robot name="nexus_amr" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <link name="base_footprint" />
+
+    <joint name="base_footprint_joint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0 0 0.0" />
+    </joint>
 
     <!-- Base link -->
     <link name="base_link">
@@ -175,7 +182,7 @@
             <odom_topic>/odom</odom_topic>
             <tf_topic>/tf</tf_topic>
             <frame_id>odom</frame_id>
-            <child_frame_id>base_link</child_frame_id>
+            <child_frame_id>base_footprint</child_frame_id>
             <odom_publish_frequency>30</odom_publish_frequency>
         </plugin>
         <plugin filename="gz-sim-joint-state-publisher-system"

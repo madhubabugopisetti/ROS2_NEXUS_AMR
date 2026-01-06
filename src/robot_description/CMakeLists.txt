@@ -13,6 +13,7 @@ install(
     launch
     urdf
     rviz
+    maps
   DESTINATION share/${PROJECT_NAME}
 )
 

@@ -4,6 +4,9 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
+        - /RobotModel1
+        - /RobotModel1/Status1
         - /LaserScan1
         - /LaserScan1/Topic1
       Splitter Ratio: 0.5
@@ -23,6 +26,8 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
+        base_footprint:
+          Value: true
         base_link:
           Value: true
         camera_link:
@@ -43,6 +48,8 @@ Visualization Manager:
       Show Axes: true
       Show Names: false
       Tree:
+        base_footprint:
+          {}
         odom:
           base_link:
             camera_link:
@@ -75,6 +82,10 @@ Visualization Manager:
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
+        base_footprint:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         base_link:
           Alpha: 1
           Show Axes: false
@@ -185,7 +196,24 @@ Visualization Manager:
     Fixed Frame: odom
     Frame Rate: 30
   Name: root
-  Tools: ~
+  Tools:
+    - Class: rviz_default_plugins/SetInitialPose
+      Covariance x: 0.25
+      Covariance y: 0.25
+      Covariance yaw: 0.06853891909122467
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: initialpose
+    - Class: rviz_default_plugins/SetGoal
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: goal_pose
   Transformation:
     Current:
       Class: rviz_default_plugins/TF
@@ -221,7 +249,7 @@ Window Geometry:
   Hide Right Dock: false
   Image:
     collapsed: false
-  QMainWindow State: 000000ff00000000fd0000000100000000000001c9000003b5fc0200000003fb000000100044006900730070006c006100790073010000003f00000197000000cc00fffffffb0000000a0056006900650077007301000001dc00000146000000a900fffffffb0000000a0049006d0061006700650100000328000000cc0000001700ffffff000005b1000003b500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd000000010000000000000374000003b5fc0200000003fb000000100044006900730070006c006100790073010000003f00000197000000cc00fffffffb0000000a0056006900650077007301000001dc00000146000000a900fffffffb0000000a0049006d0061006700650100000328000000cc0000001700ffffff00000406000003b500000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Views:
     collapsed: false
   Width: 1920

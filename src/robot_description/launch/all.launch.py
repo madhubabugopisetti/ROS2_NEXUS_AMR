@@ -4,6 +4,7 @@ from launch.substitutions import PathJoinSubstitution, Command
 from launch_ros.substitutions import FindPackageShare
 from launch_ros.actions import Node
 from launch_ros.actions import Node
+from launch.actions import TimerAction
 
 
 def generate_launch_description():
@@ -27,13 +28,16 @@ def generate_launch_description():
         output='screen'
     )
 
-    spawn_robot = ExecuteProcess(
-        cmd=[
-            'ros2', 'run', 'ros_gz_sim', 'create',
-            '-name', 'nexus_amr',
-            '-file', urdf_path
-        ],
-        output='screen'
+    spawn_robot = TimerAction(
+        period=5.0,
+        actions=[ExecuteProcess(
+            cmd=[
+                'ros2', 'run', 'ros_gz_sim', 'create',
+                '-name', 'nexus_amr',
+                '-file', urdf_path
+            ],
+            output='screen'
+        )]
     )
 
     bridge = ExecuteProcess(

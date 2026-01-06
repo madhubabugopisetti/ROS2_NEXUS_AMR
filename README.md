@@ -146,3 +146,16 @@ In rviz, select Fixed Frame as map, Add map, topic /map
 Add → Image
 Topic: /camera/image
 ```
+
+## STEP 10: Adding localization for navigation
+- Create localization.launch.py
+- Add base_footprint in robot.xacro as localization requires it
+- Change child_frame_id to base_footprint
+- [BUILD](#build)
+- Terminal 1: ros2 launch robot_description all.launch.py
+- Terminal 2: ros2 launch robot_description localization.launch.py
+```
+Fixed Frame to map
+Click on 2D Pose Estimate and click on robot
+Add Map, Topic /map, Durablity Policy Transient Local
+```
