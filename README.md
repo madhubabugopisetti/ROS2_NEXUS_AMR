@@ -118,3 +118,18 @@ python3 ~/ros2_nexus_amr_ws/src/robot_description/robot_control/keyboard_teleop.
 - [BUILD](#build)
 - ros2 launch robot_description bridges.launch.py
 - python3 ~/ros2_nexus_amr_ws/src/robot_description/robot_control/keyboard_teleop.py
+
+## STEP 8: Create a map from world
+- Add lidar link and join in robot.xacro
+- Add lidar plugin in robot.xacro
+- Create new file slam.launch.py to generate map
+- Add '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan' in bridge node
+- [BUILD](#build)
+- Terminal 1: ros2 launch robot_description all.launch.py
+- Terminal 2: ros2 launch robot_description slam.launch.py
+- Terminal 3: ros2 lifecycle set /slam_toolbox configure ros2 lifecycle set /slam_toolbox activate
+```
+In rviz, select Fixed Frame as map, Add map, topic /map
+```
+- Terminal 4: python3 ~/ros2_nexus_amr_ws/src/robot_description/robot_control/keyboard_teleop.py
+- Terminal 5: ros2 run nav2_map_server map_saver_cli -f ~/ros2_nexus_amr_ws/src/robot_description/maps/my_map
