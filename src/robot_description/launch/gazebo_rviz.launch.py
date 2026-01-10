@@ -71,7 +71,7 @@ def generate_launch_description():
             PathJoinSubstitution([
                 pkg_share,
                 'rviz',
-                'nexus.rviz'
+                'map.rviz'
             ])
         ],
         output='screen'

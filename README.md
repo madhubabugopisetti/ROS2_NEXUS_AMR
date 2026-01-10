@@ -7,6 +7,15 @@
 - OTHERS: ``` sudo apt install python3-colcon-common-extensions ros-jazzy-joint-state-publisher ros-jazzy-joint-state-publisher-gui ```
 - CHECKING: ``` sudo apt install liburdfdom-tools ```
 
+### Kill terminals: 
+```
+pkill -f ros2
+pkill -f gazebo
+pkill -f gz
+pkill -f rviz
+pkill -f nav2
+pkill -f slam_toolbox
+```
 
 ### BUILD
 ```
@@ -125,7 +134,7 @@ python3 ~/ros2_nexus_amr_ws/src/robot_description/robot_control/keyboard_teleop.
 - Create new file slam.launch.py to generate map
 - Add '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan' in bridge node
 - [BUILD](#build)
-- Terminal 1: ros2 launch robot_description all.launch.py
+- Terminal 1: ros2 launch robot_description gazebo_rviz.launch.py
 - Terminal 2: ros2 launch robot_description slam.launch.py
 - Terminal 3: ros2 lifecycle set /slam_toolbox configure ros2 lifecycle set /slam_toolbox activate
 ```
@@ -137,9 +146,9 @@ In rviz, select Fixed Frame as map, Add map, topic /map
 ## STEP 9: Adding a camera
 - Add camera link + joint in robot.xacro
 - Add gazebo plugin in same file
-- Add ```/camera/image@sensor_msgs/msg/Image@gz.msgs.Image``` in bridges in all.launch.py
+- Add ```/camera/image@sensor_msgs/msg/Image@gz.msgs.Image``` in bridges in gazebo_rviz.launch.py
 - [BUILD](#build)
-- Termianl 1: ros2 launch robot_description all.launch.py
+- Termianl 1: ros2 launch robot_description gazebo_rviz.launch.py
 - Termianl 2: python3 ~/ros2_nexus_amr_ws/src/robot_description/robot_control/keyboard_teleop.py
 - RViz:
 ```
@@ -152,10 +161,20 @@ Topic: /camera/image
 - Add base_footprint in robot.xacro as localization requires it
 - Change child_frame_id to base_footprint
 - [BUILD](#build)
-- Terminal 1: ros2 launch robot_description all.launch.py
+- Terminal 1: ros2 launch robot_description gazebo_rviz.launch.py
 - Terminal 2: ros2 launch robot_description localization.launch.py
 ```
 Fixed Frame to map
 Click on 2D Pose Estimate and click on robot
 Add Map, Topic /map, Durablity Policy Transient Local
 ```
+
+## STEP 10: Navigation
+- Create a new file nav2_params.yaml with new folder config
+- Add config to CMakeLists.txt
+- Create a new file navigation.launch.py(should contain nav2_controller, nav2_planner, nav2_bt_navigator, nav2_behaviors)
+- [Kill](#kill-terminals)
+- [Build](#build)
+- Termianl 1: ros2 launch robot_description gazebo_rviz.launch.py
+- Termianl 2: ros2 launch robot_description localization.launch.py (**check** ```ros2 lifecycle get /map_server   ros2 lifecycle get /amcl```)
+- Termianl 3: ros2 launch robot_description navigation.launch.py (**check** ```ros2 lifecycle get /controller_server   ros2 lifecycle get /planner_server```)
