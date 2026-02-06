@@ -1,5 +1,8 @@
 # ROS2_NEXUS_AMR
-
+![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
+![alt text](image-3.png)
 ## Installation
 - ROS2 JAZZY: https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
 - GAZEBO HARMONIC: https://gazebosim.org/docs/harmonic/install_ubuntu
@@ -21,7 +24,6 @@ pkill -f slam_toolbox
 ```
 cd ~/ros2_nexus_amr_ws
 source /opt/ros/jazzy/setup.bash
-colcon build --symlink-install
 source install/setup.bash
 clear
 ```
