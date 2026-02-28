@@ -182,3 +182,4 @@ Add Map, Topic /map, Durablity Policy Transient Local
 - Termianl 1: ros2 launch robot_description gazebo_rviz.launch.py
 - Termianl 2: ros2 launch robot_description localization.launch.py (**check** ```ros2 lifecycle get /map_server   ros2 lifecycle get /amcl```)
 - Termianl 3: ros2 launch robot_description navigation.launch.py (**check** ```ros2 lifecycle get /controller_server   ros2 lifecycle get /planner_server```)
+# ROS2_NEXUS_WORLDS
